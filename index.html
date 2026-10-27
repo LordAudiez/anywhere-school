@@ -1444,10 +1444,73 @@ button.t-wcard:hover{transform:translateY(-5px);box-shadow:var(--shadow),inset 0
 .fd-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;font-family:var(--thai)}
 .fd-head b{font-size:18px}
 .fd-list{display:flex;flex-direction:column;gap:8px;max-height:340px;overflow-y:auto}
-.fd-row{display:grid;grid-template-columns:minmax(160px,.6fr) minmax(0,1.4fr);gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--glass-2);box-shadow:inset 0 0 0 1px var(--hair);font-family:var(--thai)}
+.fd-row-old{display:grid;grid-template-columns:minmax(160px,.6fr) minmax(0,1.4fr);gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--glass-2);box-shadow:inset 0 0 0 1px var(--hair);font-family:var(--thai)}
 .fd-row > div:first-child{display:flex;flex-direction:column;line-height:1.35}
 .fd-row .mono{font-size:13px;color:var(--ink-3)}
 @media (max-width:640px){.fd-row{grid-template-columns:minmax(0,1fr)}}
+
+.fd-row{display:flex;align-items:stretch;gap:8px}
+.fd-open{flex:1;min-width:0;display:grid;grid-template-columns:minmax(160px,.55fr) minmax(0,1.3fr) auto;gap:12px;align-items:center;padding:10px 14px;border:0;border-radius:14px;background:var(--glass-2);box-shadow:inset 0 0 0 1px var(--hair);color:var(--ink);font-family:var(--thai);text-align:left;cursor:pointer;transition:background .2s,box-shadow .2s,transform .2s}
+.fd-open:hover{background:var(--glass-3);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--web) 55%,transparent);transform:translateY(-1px)}
+.fd-who{display:flex;flex-direction:column;line-height:1.35;min-width:0}
+.fd-who .mono{font-size:13px;color:var(--ink-3)}
+.fd-meta{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-3);white-space:nowrap}
+.fd-meta span{padding:2px 8px;border-radius:999px;background:var(--glass-3)}
+.fd-meta svg{width:18px;height:18px;color:var(--ink-2);transition:transform .2s}.fd-open:hover .fd-meta svg{transform:translateX(3px)}
+.fd-del{flex:none;width:48px;border:0;border-radius:14px;display:grid;place-items:center;background:var(--glass-2);box-shadow:inset 0 0 0 1px var(--hair);color:var(--ink-3);cursor:pointer;transition:background .2s,color .2s}
+.fd-del svg{width:19px;height:19px}
+.fd-del:hover,.fd-del:focus-visible{background:color-mix(in srgb,var(--danger) 18%,transparent);color:var(--danger)}
+@media (max-width:640px){.fd-open{grid-template-columns:minmax(0,1fr)}.fd-meta{justify-content:flex-start}}
+.btn-danger{background:var(--danger);color:#fff}
+.fdd-contact{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:flex-end;padding:14px 16px;border-radius:16px;background:var(--glass-2);box-shadow:inset 0 0 0 1px var(--hair)}
+.fdd-contact > div{display:flex;flex-direction:column;gap:2px;font-family:var(--thai)}
+.fdd-contact b{font-size:16px}
+.fdd-act{flex-direction:row!important;gap:8px!important;margin-left:auto}
+.fdd-sec{display:flex;flex-direction:column;gap:8px}
+.fdd-kids{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.fdd-kid{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border-radius:14px;background:var(--glass-2);box-shadow:inset 0 0 0 1px var(--hair);font-family:var(--thai)}
+.fdd-kid .muted{font-size:13px}
+.fdd-list{display:flex;flex-direction:column;gap:6px;max-height:220px;overflow-y:auto}
+.fdd-foot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-top:4px}
+.fdd-foot .btn svg{width:17px;height:17px}
+.cfm{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:10px 6px 4px;font-family:var(--thai)}
+.cfm-ic{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:color-mix(in srgb,var(--danger) 18%,transparent);color:var(--danger);animation:cfmShake .5s ease 1}
+.cfm-ic svg{width:28px;height:28px}
+@keyframes cfmShake{20%,60%{transform:rotate(-8deg)}40%,80%{transform:rotate(8deg)}}
+.cfm h3{font-size:21px}.cfm p{color:var(--ink-2);font-size:15px;max-width:440px}
+.cfm-opt{display:flex;gap:10px;align-items:flex-start;text-align:left;padding:10px 14px;border-radius:14px;background:var(--glass-2);box-shadow:inset 0 0 0 1px var(--hair);font-size:14.5px;cursor:pointer;max-width:440px}
+.cfm-opt input{width:18px;height:18px;margin-top:3px;accent-color:var(--danger)}
+.cfm .cfm-warn{color:var(--danger);font-weight:700;font-size:13.5px}
+.cfm-btns{display:flex;gap:10px;justify-content:center;width:100%}
+.cfm-btns .btn{min-width:130px}
+
+.cal-d.tcal{position:relative}
+.cal-d.tcal.shut{background:var(--glass-2);color:var(--ink-3);cursor:pointer}
+.cal-d.tcal.shut small{color:var(--ink-3)}
+.cal-d.tcal:not(:disabled){cursor:pointer}
+.cal-d.tcal.haspend{box-shadow:inset 0 0 0 2px var(--lemon)}
+.tc-badge{position:absolute;left:6px;top:6px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--lemon);color:#1B1A22;font-style:normal;font-family:var(--mono);font-size:11px;font-weight:700;display:grid;place-items:center}
+.td-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.td-bar .note{margin-left:auto}
+.td-list{display:flex;flex-direction:column;gap:6px;max-height:min(58vh,560px);max-height:min(58dvh,560px);overflow-y:auto;overscroll-behavior:contain;padding-right:2px}
+.td-row{display:grid;grid-template-columns:56px 118px minmax(0,1fr);gap:10px;align-items:center;padding:8px 10px;border-radius:14px;background:var(--glass-2);box-shadow:inset 0 0 0 1px var(--hair);transition:background .25s,box-shadow .25s}
+.td-row.open{background:color-mix(in srgb,var(--ok) 10%,var(--glass-2));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ok) 35%,transparent)}
+.td-row.busy{box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--lemon) 55%,transparent)}
+.td-row.past{opacity:.5}
+.td-t{font-weight:700;font-size:15px}
+.td-sw{display:inline-flex;align-items:center;gap:8px;border:0;background:none;padding:6px 4px;color:var(--ink-2);font-family:var(--thai);font-size:13px;font-weight:700;cursor:pointer}
+.td-sw i{position:relative;flex:none;width:42px;height:24px;border-radius:999px;background:var(--line);transition:background .25s}
+.td-sw i::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .3s cubic-bezier(.3,1.4,.5,1);box-shadow:0 2px 5px rgba(0,0,0,.3)}
+.td-sw[aria-checked="true"] i{background:var(--ok)}.td-sw[aria-checked="true"] i::after{transform:translateX(18px)}
+.td-sw[aria-checked="true"]{color:var(--ok)}
+.td-sw:disabled{cursor:default;opacity:.7}
+.td-rqs{display:flex;flex-direction:column;gap:6px;min-width:0}
+.td-none{font-size:13px;color:var(--ink-3);font-family:var(--thai)}
+.td-rq{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:var(--thai)}
+.td-rq.cont{opacity:.7}
+.td-rqt{display:flex;flex-direction:column;line-height:1.3;min-width:0;flex:1}
+.td-rqt b{font-size:14.5px}.td-rqt small{font-size:12px;color:var(--ink-3)}
+@media (max-width:640px){.td-row{grid-template-columns:52px minmax(0,1fr)}.td-rqs{grid-column:1 / -1}.td-bar .note{display:none}}
 </style>
 
 <canvas id="stars" aria-hidden="true"></canvas>
@@ -1997,7 +2060,7 @@ button.t-wcard:hover{transform:translateY(-5px);box-shadow:var(--shadow),inset 0
 <!-- ================= SCHEDULE ================= -->
 <section class="view" data-view="schedule" hidden aria-labelledby="schTitle">
   <div class="sec-head"><span class="eyebrow">ตารางเรียน · Schedule</span><h2 id="schTitle">เวลาว่างของครูพี่อู๋</h2><p id="schLead"></p></div>
-  <div class="card pad tbar" id="tBar" hidden><div><b>โหมดครู</b><span>แตะช่องเพื่อเปิด/ปิดเวลาว่าง · ช่องสีเหลืองมีคำขอรอยืนยัน · ช่องสีฟ้ายืนยันแล้ว</span></div><div class="rq-act"><button class="btn btn-sm" id="tCopyWeek" type="button">คัดลอกเวลาไปสัปดาห์หน้า</button><button class="btn btn-sm btn-ok" id="tOpenWeek" type="button">เปิดทั้งสัปดาห์</button><button class="btn btn-sm" id="tCloseWeek" type="button">ปิดทั้งสัปดาห์</button></div></div>
+  <div class="card pad tbar" id="tBar" hidden><div><b>โหมดครู</b><span>แตะวันในปฏิทินเพื่อเปิด/ปิดชั่วโมงว่าง และยืนยันคำขอเรียน · จุดเหลือง = รอยืนยัน · จุดฟ้า = ยืนยันแล้ว</span></div><div class="rq-act"><button class="btn btn-sm btn-ok" id="tOpenMonth" type="button">เปิดทั้งเดือน</button><button class="btn btn-sm" id="tCloseMonth" type="button">ปิดทั้งเดือน</button></div></div>
   <div class="sched">
     <div class="card pad cal" id="calCard">
       <div class="week-nav">
@@ -2029,7 +2092,7 @@ button.t-wcard:hover{transform:translateY(-5px);box-shadow:var(--shadow),inset 0
     <aside class="card pad mine-list" id="tPanel" hidden>
       <span class="eyebrow">คำขอรอยืนยัน</span>
       <div id="tPend" style="display:flex;flex-direction:column;gap:8px"></div>
-      <div class="sum-row" style="border-top:1px solid var(--hair);padding-top:12px"><span>เวลาว่างสัปดาห์นี้</span><span class="num" id="tOpenCount">0 ช่อง</span></div>
+      <div class="sum-row" style="border-top:1px solid var(--hair);padding-top:12px"><span>ชั่วโมงว่างเดือนนี้</span><span class="num" id="tOpenCount">0 ช่อง</span></div>
       <button class="btn" data-go="requests" type="button">จัดการคำขอทั้งหมด</button>
     </aside>
   </div>
@@ -2483,6 +2546,7 @@ function makeLocalStore(){
     saveFamily:async f=>{const id=await famId(f.phone);const ex=d.fams[id]||{};d.fams[id]={parent:f.parent||ex.parent||'',phone:f.phone||ex.phone||'',line:f.line||ex.line||'',kids:mergeKids(ex.kids,f.kids),updatedAt:Date.now(),createdAt:ex.createdAt||Date.now()};save();return id},
     getFamily:async phone=>{const id=await famId(phone);return d.fams[id]?Object.assign({id},d.fams[id]):null},
     watchFamilies:cb=>sub(x=>cb(Object.entries(x.fams||{}).map(([id,v])=>Object.assign({id},v)))),
+    deleteFamily:async i=>{delete d.fams[i];save()},deleteRegistration:async i=>{delete d.regs[i];save()},deleteRequest:async i=>{delete d.requests[i];save()},
     login:async(u,p)=>{const ok=u.trim()===DEMO_USER&&(await sha256(p))===DEMO_PASS_SHA256;if(ok){teacher=true;setT(true);authSubs.forEach(f=>f(true))}return ok},
     logout:async()=>{teacher=false;setT(false);authSubs.forEach(f=>f(false))},
     onAuth:cb=>{authSubs.add(cb);setTimeout(()=>cb(teacher),0)}
@@ -2506,6 +2570,7 @@ function makeFirebaseStore(){
     saveFamily:async f=>{const id=await famId(f.phone);const ref=db.collection('families').doc(id);let ex={};try{const s=await ref.get();if(s.exists)ex=s.data()}catch(e){}
       await ref.set({parent:String(f.parent||ex.parent||'').slice(0,120),phone:String(f.phone||ex.phone||'').slice(0,20),line:String(f.line||ex.line||'').slice(0,60),kids:mergeKids(ex.kids,f.kids),updatedAt:FV.serverTimestamp(),createdAt:ex.createdAt||FV.serverTimestamp()});return id},
     getFamily:async phone=>{const s=await db.collection('families').doc(await famId(phone)).get();return s.exists?Object.assign({id:s.id},s.data()):null},
+    deleteFamily:i=>db.collection('families').doc(i).delete(),deleteRegistration:i=>db.collection('registrations').doc(i).delete(),deleteRequest:i=>db.collection('requests').doc(i).delete(),
     watchFamilies:cb=>db.collection('families').orderBy('updatedAt','desc').limit(500).onSnapshot(q=>cb(q.docs.map(x=>Object.assign({id:x.id},x.data()))),e=>console.warn(e)),
     login:(u,p)=>auth.signInWithEmailAndPassword(u.trim()===DEMO_USER?TEACHER_EMAIL:u.trim(),p).then(()=>true,()=>false),
     logout:()=>auth.signOut(),
@@ -2556,8 +2621,8 @@ function renderWeek(){
   const view=$('[data-view="schedule"]');view.classList.toggle('tmode',isTeacher);
   $('#schTitle').textContent=isTeacher?'จัดการเวลาว่าง (โหมดครู)':'เวลาว่างของครูพี่อู๋';
   $('#schLead').textContent=isTeacher?'แตะช่องเวลาเพื่อเปิดหรือปิดเวลาว่าง ช่องที่มีคำขอแตะเพื่อดูรายละเอียดและยืนยัน':'เลือกวันในปฏิทิน แล้วลากเลือกช่วงเวลา เลือกครอบครัว น้อง และคอร์ส ดูราคาประมาณทันที ไม่ต้องสมัครสมาชิก';
-  $('#tBar').hidden=!isTeacher;$('#famPanel').hidden=isTeacher;$('#tPanel').hidden=!isTeacher;$('#weekCard').hidden=!isTeacher;$('#calCard').hidden=isTeacher;
-  if(isTeacher)renderTeacherWeek();else renderCalendar();
+  $('#tBar').hidden=!isTeacher;$('#famPanel').hidden=isTeacher;$('#tPanel').hidden=!isTeacher;$('#weekCard').hidden=true;$('#calCard').hidden=false;
+  renderCalendar();if(tdDay&&!$('#modalBack').hidden&&$('#modal [data-tday]'))drawTD();
   isTeacher?renderTPanel():renderMine();
 }
 function renderTeacherWeek(){
@@ -2582,7 +2647,11 @@ function renderCalendar(){
   const first=(m0.getDay()+6)%7;const dim=new Date(m0.getFullYear(),m0.getMonth()+1,0).getDate();const today=new Date();today.setHours(0,0,0,0);
   let html=['จ','อ','พ','พฤ','ศ','ส','อา'].map(d=>'<span class="cal-wd">'+d+'</span>').join('');
   for(let i=0;i<first;i++)html+='<span class="cal-x"></span>';
-  for(let d=1;d<=dim;d++){const dt=new Date(m0.getFullYear(),m0.getMonth(),d);const past=dt<today;const free=HOURS.filter(h=>slotFree(key(dt,h))).length;
+  for(let d=1;d<=dim;d++){const dt=new Date(m0.getFullYear(),m0.getMonth(),d);const past=dt<today;
+    if(isTeacher){const open=HOURS.filter(h=>isOpen(key(dt,h))).length;const rq=allReqs.filter(r=>activeR(r)&&slotDate(r.k).toDateString()===dt.toDateString());const pend=rq.filter(r=>r.status==='pending').length,conf=rq.filter(r=>r.status==='confirmed').length;
+      const cls='cal-d tcal'+(past?' past':'')+(dt.getTime()===today.getTime()?' today':'')+(open&&!past?' has':'')+(!open&&!past?' shut':'')+(pend?' haspend':'');
+      html+='<button type="button" class="'+cls+'" data-day="'+key(dt,0).slice(0,10)+'"'+(past&&!rq.length?' disabled':'')+' aria-label="'+DAYSF[dt.getDay()]+' '+dt.getDate()+' เปิด '+open+' ชั่วโมง'+(pend?' รอยืนยัน '+pend:'')+(conf?' ยืนยันแล้ว '+conf:'')+'"><b>'+d+'</b>'+(past?'':'<small>'+(open?'เปิด '+open+' ชม.':'ปิด')+'</small>')+'<span class="cal-dots">'+(pend?'<i class="dw"></i>':'')+(conf?'<i class="dc"></i>':'')+'</span>'+(pend?'<em class="tc-badge">'+pend+'</em>':'')+'</button>';continue}
+    const free=HOURS.filter(h=>slotFree(key(dt,h))).length;
     const mine=myList().filter(r=>activeR(r)&&slotDate(r.k).toDateString()===dt.toDateString());const wait=mine.some(r=>r.status==='pending'),conf=mine.some(r=>r.status==='confirmed');
     const cls='cal-d'+(past?' past':'')+(dt.getTime()===today.getTime()?' today':'')+(free&&!past?' has':'')+(selDay&&selDay.toDateString()===dt.toDateString()?' sel':'');
     html+='<button type="button" class="'+cls+'" data-day="'+key(dt,0).slice(0,10)+'"'+(past||(!free&&!mine.length)?' disabled':'')+' aria-label="'+DAYSF[dt.getDay()]+' '+dt.getDate()+' '+(free?free+' ชั่วโมงว่าง':'ไม่ว่าง')+'"><b>'+d+'</b>'+(free&&!past?'<small>'+free+' ชม.</small>':'')+'<span class="cal-dots">'+(wait?'<i class="dw"></i>':'')+(conf?'<i class="dc"></i>':'')+'</span></button>'}
@@ -2600,10 +2669,10 @@ function renderMine(){
 function renderTPanel(){
   const pend=allReqs.filter(r=>r.status==='pending').sort((a,b)=>a.k<b.k?-1:1);
   $('#tPend').innerHTML=pend.length?pend.slice(0,6).map(r=>'<div class="bk"><div style="min-width:0"><div class="when">'+whenR(r)+'</div><div class="who">'+esc(r.kid)+'<small>'+(COURSES[r.course]?COURSES[r.course].th:'')+' · '+esc(r.phone||'')+'</small></div></div><div class="bk-r"><button class="btn btn-sm btn-ok" data-confirm="'+r.id+'">ยืนยัน</button></div></div>').join('')+(pend.length>6?'<button class="btn btn-sm" data-go="requests">ดูทั้งหมด '+pend.length+' รายการ</button>':''):'<div class="empty">ไม่มีคำขอรอยืนยัน</div>';
-  $('#tOpenCount').textContent=$$('#days .tslot.open:not(.past)').length+' ช่อง';
+  $('#tOpenCount').textContent=monthDays().reduce((n,dt)=>n+HOURS.filter(h=>slotFree(key(dt,h))).length,0)+' ชม.';
 }
 $('#days').addEventListener('click',e=>{const t=e.target.closest('[data-tslot]');if(t)tSlot(t.dataset.tslot)});
-$('#calGrid').addEventListener('click',e=>{const b=e.target.closest('[data-day]');if(!b)return;const [y,m,d]=b.dataset.day.split('-').map(Number);selDay=new Date(y,m-1,d);renderCalendar();openDay(selDay)});
+$('#calGrid').addEventListener('click',e=>{const b=e.target.closest('[data-day]');if(!b)return;const [y,m,d]=b.dataset.day.split('-').map(Number);selDay=new Date(y,m-1,d);renderCalendar();if(isTeacher)openTeacherDay(selDay);else openDay(selDay)});
 $('#wPrev').addEventListener('click',()=>{if(wOff>0){wOff--;renderWeek()}});
 $('#wNext').addEventListener('click',()=>{if(wOff<7){wOff++;renderWeek()}});
 $('#mPrev').addEventListener('click',()=>{if(mOff>0){mOff--;renderCalendar()}});
@@ -2624,12 +2693,9 @@ function tSlot(k){const rq=allReqs.filter(r=>activeR(r)&&covers(r,k));
 const closeBtn=()=>'<button class="icon-btn" id="mClose" aria-label="ปิด"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>';
 function reqRow(r){const c=COURSES[r.course];return '<div class="rq '+(STATUS[r.status]||{}).c+'"><div class="rq-main"><div class="rq-top"><b class="when">'+whenR(r)+'</b>'+statusChip(r.status)+'</div><div class="rq-who"><span class="cdot" style="--c:var('+(c?c.c:'--web')+')"></span><b>'+esc(r.kid)+'</b><span class="muted">'+(c?c.th:'')+' · '+(r.online?'<span class="otag">ออนไลน์ −5%</span> ':r.online===false?'<span class="otag off">ที่บ้าน/สถานที่</span> ':'')+baht(rateOf(r.course)*rlen(r)*(r.online?1-ODISC:1))+'</span></div><div class="rq-meta">ผู้ปกครอง: '+esc(r.parent||'-')+' · <span class="mono sel">'+esc(r.phone||'-')+'</span>'+(r.note?'<br>หมายเหตุ: '+esc(r.note):'')+'<br><span class="muted">ส่งเมื่อ '+new Date(tsOf(r.createdAt)).toLocaleString('th-TH',{dateStyle:'medium',timeStyle:'short'})+'</span></div></div><div class="rq-act">'+
   (r.status==='pending'?'<button class="btn btn-sm btn-ok" data-confirm="'+r.id+'">ยืนยัน</button><button class="btn btn-sm" data-decline="'+r.id+'">ไม่สะดวก</button>':r.status==='confirmed'?'<button class="btn btn-sm" data-unconfirm="'+r.id+'">ยกเลิกการยืนยัน</button>':'')+(r.phone?'<button class="btn btn-sm" data-copy="'+esc(r.phone)+'">คัดลอกเบอร์</button>':'')+'</div></div>'}
-$('#tCopyWeek').addEventListener('click',()=>{const now=new Date();const s=startOfWeek(now);s.setDate(s.getDate()+wOff*7);const map={};for(let i=0;i<7;i++){const d=new Date(s);d.setDate(s.getDate()+i);const n=new Date(d);n.setDate(d.getDate()+7);HOURS.forEach(h=>{map[key(n,h)]=isOpen(key(d,h))})}DB.setOpen(map).then(()=>{toast('คัดลอกเวลาว่างไปสัปดาห์ถัดไปแล้ว');wOff=Math.min(7,wOff+1);renderWeek()})});
-$('#tOpenWeek').addEventListener('click',()=>{const now=new Date();const s=startOfWeek(now);s.setDate(s.getDate()+wOff*7);const map={};for(let i=0;i<7;i++){const d=new Date(s);d.setDate(s.getDate()+i);HOURS.forEach(h=>{map[key(d,h)]=true})}DB.setOpen(map).then(()=>{toast('เปิดเวลาว่างทั้งสัปดาห์แล้ว');renderWeek()})});
 $('#days').addEventListener('click',e=>{const b=e.target.closest('[data-dayall]');if(!b)return;e.stopPropagation();const d=slotDate(b.dataset.dayall);const on=b.dataset.v==='1';const map={};
   HOURS.forEach(h=>{const k=key(d,h);if(on||!allReqs.some(r=>r.status==='confirmed'&&covers(r,k)))map[k]=on});
   DB.setOpen(map).then(()=>{toast(on?'เปิดเวลาว่างทั้งวันแล้ว':'ปิดเวลาว่างทั้งวันแล้ว (ยกเว้นคลาสที่ยืนยันแล้ว)');renderWeek()})},true);
-$('#tCloseWeek').addEventListener('click',()=>{const now=new Date();const s=startOfWeek(now);s.setDate(s.getDate()+wOff*7);const map={};for(let i=0;i<7;i++){const d=new Date(s);d.setDate(s.getDate()+i);HOURS.forEach(h=>{const k=key(d,h);if(!allReqs.some(r=>r.status==='confirmed'&&covers(r,k)))map[k]=false})}DB.setOpen(map).then(()=>{toast('ปิดเวลาว่างทั้งสัปดาห์แล้ว');renderWeek()})});
 const courseOpts=(list,sel)=>((list&&list.length)?list:Object.keys(COURSES)).map(v=>'<option value="'+v+'"'+(v===sel?' selected':'')+'>'+COURSES[v].th+' · ฿'+rateOf(v)+'/ชม.</option>').join('');
 
 /* day popup: drag hours, pick family, students, courses, live estimate */
@@ -2718,7 +2784,7 @@ const REGST={new:{t:'ใหม่',c:'st-wait'},contacted:{t:'ติดต่อ
 function renderStudents(){if(!isTeacher)return;const q=($('#stuSearch').value||'').trim().toLowerCase();
   const fl=allFams.filter(f=>!q||JSON.stringify([f.parent,f.phone,(f.kids||[]).map(k=>k.name)]).toLowerCase().includes(q));
   $('#famCount').textContent=allFams.length+' ครอบครัว · '+allFams.reduce((a,f)=>a+(f.kids||[]).length,0)+' คน · อัปเดตเรียลไทม์';
-  $('#famDir').innerHTML=fl.length?fl.map(f=>'<div class="fd-row"><div><b>'+esc(f.parent||'-')+'</b><span class="mono sel">'+esc(f.phone||'')+'</span></div><div class="chips">'+(f.kids||[]).map(k=>'<span class="chip"><i style="--c:var('+(COURSES[(k.courses||[])[0]]?COURSES[k.courses[0]].c:'--web')+')"></i>'+esc(k.name)+(k.age?' · '+esc(k.age)+' ปี':'')+'</span>').join('')+'</div></div>').join(''):'<div class="empty">ยังไม่มีข้อมูลครอบครัว</div>';
+  $('#famDir').innerHTML=fl.length?fl.map(f=>{const nReq=famReqs(f).length,nReg=famRegs(f).length;return '<div class="fd-row" data-fam="'+esc(f.id)+'"><button type="button" class="fd-open" data-famopen="'+esc(f.id)+'" aria-label="ดูรายละเอียดครอบครัว '+esc(f.parent||'')+'"><span class="fd-who"><b>'+esc(f.parent||'-')+'</b><span class="mono">'+esc(f.phone||'')+'</span></span><span class="chips">'+(f.kids||[]).map(k=>'<span class="chip"><i style="--c:var('+(COURSES[(k.courses||[])[0]]?COURSES[k.courses[0]].c:'--web')+')"></i>'+esc(k.name)+(k.age?' · '+esc(k.age)+' ปี':'')+'</span>').join('')+'</span><span class="fd-meta">'+(nReg?'<span>ใบสมัคร '+nReg+'</span>':'')+(nReq?'<span>คำขอ '+nReq+'</span>':'')+'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></span></button><button type="button" class="fd-del" data-famdel="'+esc(f.id)+'" aria-label="ลบครอบครัว '+esc(f.parent||'')+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></button></div>'}).join(''):'<div class="empty">ยังไม่มีข้อมูลครอบครัว</div>';
   const list=allRegs.slice().sort((a,b)=>tsOf(b.createdAt)-tsOf(a.createdAt)).filter(r=>!q||JSON.stringify([r.parent,r.phone,r.line,(r.kids||[]).map(k=>k.name)]).toLowerCase().includes(q));
   $('#stuCount').textContent=allRegs.length+' ครอบครัว · '+allRegs.reduce((a,r)=>a+(r.kids||[]).length,0)+' คน';
   $('#stuList').innerHTML=list.length?list.map(r=>{const st=REGST[r.status]||REGST.new;return '<article class="card pad stu"><div class="stu-head"><div><b class="stu-name">'+esc(r.parent||'-')+'</b><div class="stu-contact"><span class="mono sel">'+esc(r.phone||'-')+'</span>'+(r.line?' · LINE: <span class="sel">'+esc(r.line)+'</span>':'')+'</div></div><span class="stchip '+st.c+'">'+st.t+'</span></div>'+
@@ -3586,6 +3652,63 @@ $$('.flag[data-flag]').forEach(f=>{const n=+f.dataset.n||9;f.style.setProperty('
 })();
 /* ---------- topbar height for fit-screen pages ---------- */
 (function(){const t=$('.topbar');const set=()=>{if(t)document.documentElement.style.setProperty('--tbh',Math.ceil(t.getBoundingClientRect().height)+'px')};set();addEventListener('resize',set);try{new ResizeObserver(set).observe(t)}catch(_){}})();
+
+
+/* ---------- teacher: month calendar + day popup ---------- */
+let tdDay=null;
+function monthDays(){const now=new Date();const m0=new Date(now.getFullYear(),now.getMonth()+mOff,1);const dim=new Date(m0.getFullYear(),m0.getMonth()+1,0).getDate();const today=new Date();today.setHours(0,0,0,0);const out=[];for(let d=1;d<=dim;d++){const dt=new Date(m0.getFullYear(),m0.getMonth(),d);if(dt>=today)out.push(dt)}return out}
+const confirmedAt=k=>allReqs.some(r=>r.status==='confirmed'&&covers(r,k));
+$('#tOpenMonth').addEventListener('click',()=>{const map={};monthDays().forEach(dt=>HOURS.forEach(h=>{map[key(dt,h)]=true}));DB.setOpen(map).then(()=>toast('เปิดเวลาว่างทั้งเดือนแล้ว'))});
+$('#tCloseMonth').addEventListener('click',()=>{const map={};monthDays().forEach(dt=>HOURS.forEach(h=>{const k=key(dt,h);if(!confirmedAt(k))map[k]=false}));DB.setOpen(map).then(()=>toast('ปิดเวลาว่างทั้งเดือนแล้ว (ยกเว้นคลาสที่ยืนยันแล้ว)'))});
+function openTeacherDay(day){tdDay=day;const m=$('#modal');m.classList.add('sm');drawTD();openModal();}
+function drawTD(){const day=tdDay;const m=$('#modal');const now=new Date();
+  const rows=HOURS.map(h=>{const k=key(day,h);const st=new Date(day);st.setHours(h,0,0,0);const past=st<now;const open=isOpen(k);const rq=allReqs.filter(r=>activeR(r)&&covers(r,k));
+    const reqs=rq.map(r=>{const c=COURSES[r.course];const first=r.k===k;return '<div class="td-rq'+(first?'':' cont')+'"><span class="cdot" style="--c:var('+(c?c.c:'--web')+')"></span><span class="td-rqt"><b>'+esc(r.kid)+'</b><small>'+(c?c.th:'')+' · '+esc(r.parent||'')+(rlen(r)>1?' · '+hh(slotDate(r.k).getHours())+'–'+hh(slotDate(r.k).getHours()+rlen(r)):'')+'</small></span>'+statusChip(r.status)+(first&&r.status==='pending'?'<button class="btn btn-sm btn-ok" type="button" data-confirm="'+r.id+'">ยืนยัน</button><button class="btn btn-sm" type="button" data-decline="'+r.id+'">ไม่สะดวก</button>':'')+(first&&r.status==='confirmed'?'<button class="btn btn-sm" type="button" data-unconfirm="'+r.id+'">ยกเลิกยืนยัน</button>':'')+'</div>'}).join('');
+    const locked=rq.some(r=>r.status==='confirmed');
+    return '<div class="td-row'+(open?' open':' closed')+(past?' past':'')+(rq.length?' busy':'')+'"><span class="td-t mono">'+hh(h)+'</span><button type="button" class="td-sw" data-tdk="'+k+'" role="switch" aria-checked="'+open+'"'+(past||locked?' disabled':'')+' aria-label="'+hh(h)+' '+(open?'เปิดรับ':'ปิด')+'"><i></i><span>'+(locked?'มีคลาส':open?'เปิดรับ':'ปิด')+'</span></button><div class="td-rqs">'+(reqs||'<span class="td-none">'+(past?'ผ่านไปแล้ว':open?'ว่าง ครอบครัวขอเรียนได้':'ปิด ไม่รับคำขอ')+'</span>')+'</div></div>'}).join('');
+  const openN=HOURS.filter(h=>isOpen(key(day,h))).length;const dayRq=allReqs.filter(r=>activeR(r)&&slotDate(r.k).toDateString()===day.toDateString());
+  const sc=$('.td-list',m)?$('.td-list',m).scrollTop:0;
+  m.innerHTML='<div class="mhead" data-tday><div><span class="eyebrow">โหมดครู · จัดการวันนี้</span><h3 id="mTitle">'+DAYSF[day.getDay()]+' '+day.toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric'})+'</h3><p>เปิด '+openN+'/'+HOURS.length+' ชั่วโมง · รอยืนยัน '+dayRq.filter(r=>r.status==='pending').length+' · ยืนยันแล้ว '+dayRq.filter(r=>r.status==='confirmed').length+'</p></div>'+closeBtn()+'</div>'+
+   '<div class="td-bar"><button class="btn btn-sm btn-ok" type="button" id="tdAllOn"'+(openN===HOURS.length?' disabled':'')+'>เปิดทั้งวัน</button><button class="btn btn-sm" type="button" id="tdAllOff"'+(openN===0?' disabled':'')+'>ปิดทั้งวัน</button><span class="note">แตะสวิตช์เพื่อเปิด/ปิดแต่ละชั่วโมง</span></div>'+
+   '<div class="td-list">'+rows+'</div>';
+  $('.td-list',m).scrollTop=sc;
+  $('#mClose').addEventListener('click',()=>{tdDay=null;closeModal()});
+  $('#tdAllOn').addEventListener('click',()=>{const map={};HOURS.forEach(h=>{map[key(day,h)]=true});DB.setOpen(map)});
+  $('#tdAllOff').addEventListener('click',()=>{const map={};HOURS.forEach(h=>{const k=key(day,h);if(!confirmedAt(k))map[k]=false});DB.setOpen(map)});
+  $('.td-list',m).addEventListener('click',e=>{const b=e.target.closest('[data-tdk]');if(!b||b.disabled)return;const k=b.dataset.tdk;const v=!isOpen(k);b.setAttribute('aria-checked',v);b.closest('.td-row').classList.toggle('open',v);b.closest('.td-row').classList.toggle('closed',!v);DB.setOpen({[k]:v})})}
+
+/* ---------- family detail + delete (teacher) ---------- */
+const samePhone=(a,b)=>normPhone(a)&&normPhone(a)===normPhone(b);
+function famReqs(f){return allReqs.filter(r=>samePhone(r.phone,f.phone))}
+function famRegs(f){return allRegs.filter(r=>samePhone(r.phone,f.phone))}
+const fmtTs=v=>{const t=tsOf(v);return t?new Date(t).toLocaleString('th-TH',{dateStyle:'medium',timeStyle:'short'}):'-'};
+function openFamily(id){const f=allFams.find(x=>x.id===id);if(!f)return;const m=$('#modal');m.classList.add('sm');
+  const regs=famRegs(f).sort((a,b)=>tsOf(b.createdAt)-tsOf(a.createdAt)),reqs=famReqs(f).sort((a,b)=>a.k<b.k?1:-1);
+  const reg0=regs[0]||{};const line=f.line||reg0.line||'';
+  m.innerHTML='<div class="mhead"><div><span class="eyebrow">ข้อมูลครอบครัว · Family</span><h3 id="mTitle">'+esc(f.parent||'-')+'</h3><p>บันทึกครั้งแรก '+fmtTs(f.createdAt)+' · อัปเดตล่าสุด '+fmtTs(f.updatedAt)+'</p></div>'+closeBtn()+'</div>'+
+   '<div class="fdd-contact"><div><span class="flabel">เบอร์โทร</span><b class="mono sel">'+esc(f.phone||'-')+'</b></div>'+(line?'<div><span class="flabel">LINE</span><b class="sel">'+esc(line)+'</b></div>':'')+(reg0.place?'<div><span class="flabel">สถานที่เรียน</span><b>'+esc(reg0.place)+(reg0.addr?' · '+esc(reg0.addr):'')+'</b></div>':'')+
+   '<div class="fdd-act">'+(f.phone?'<button class="btn btn-sm" type="button" data-copy="'+esc(f.phone)+'">คัดลอกเบอร์</button><a class="btn btn-sm" href="tel:'+esc(normPhone(f.phone))+'">โทรหา</a>':'')+'</div></div>'+
+   '<div class="fdd-sec"><span class="eyebrow">น้อง ๆ · '+(f.kids||[]).length+' คน</span><div class="fdd-kids">'+((f.kids||[]).map(k=>'<div class="fdd-kid"><b>'+esc(k.name)+'</b><span class="muted">'+(k.age?'อายุ '+esc(k.age)+' ปี':'')+(k.level&&LEVELS[k.level]?' · '+LEVELS[k.level]:'')+'</span><div class="chips">'+(k.courses||[]).filter(c=>COURSES[c]).map(c=>'<span class="chip"><i style="--c:var('+COURSES[c].c+')"></i>'+COURSES[c].th+'</span>').join('')+'</div></div>').join('')||'<div class="empty">ไม่มีรายชื่อน้อง</div>')+'</div></div>'+
+   '<div class="fdd-sec"><span class="eyebrow">คำขอเรียน · '+reqs.length+'</span>'+(reqs.length?'<div class="fdd-list">'+reqs.map(r=>'<div class="bk"><div style="min-width:0"><div class="when">'+whenR(r)+'</div><div class="who">'+esc(r.kid)+'<small>'+(COURSES[r.course]?COURSES[r.course].th:'')+(r.online?' · ออนไลน์':'')+'</small></div></div><div class="bk-r">'+statusChip(r.status)+'</div></div>').join('')+'</div>':'<div class="empty">ยังไม่มีคำขอเรียน</div>')+'</div>'+
+   '<div class="fdd-sec"><span class="eyebrow">ใบสมัคร · '+regs.length+'</span>'+(regs.length?'<div class="fdd-list">'+regs.map(r=>'<div class="bk"><div style="min-width:0"><div class="when">'+fmtTs(r.createdAt)+'</div><div class="who">น้อง '+(r.kids||[]).map(k=>esc(k.name)).join(', ')+'<small>ยอดประมาณ '+baht(r.total||0)+(r.note?' · '+esc(r.note):'')+'</small></div></div><div class="bk-r">'+((REGST[r.status]||REGST.new)?'<span class="stchip '+(REGST[r.status]||REGST.new).c+'">'+(REGST[r.status]||REGST.new).t+'</span>':'')+'</div></div>').join('')+'</div>':'<div class="empty">ยังไม่มีใบสมัคร</div>')+'</div>'+
+   '<div class="fdd-foot"><button class="btn btn-danger" type="button" id="fddDel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg>ลบครอบครัวนี้</button><button class="btn" type="button" id="fddClose">ปิด</button></div>';
+  openModal();$('#mClose').addEventListener('click',closeModal);$('#fddClose').addEventListener('click',closeModal);$('#fddDel').addEventListener('click',()=>confirmDeleteFamily(id))}
+function confirmDeleteFamily(id){const f=allFams.find(x=>x.id===id);if(!f)return;const m=$('#modal');m.classList.add('sm');
+  const regs=famRegs(f),reqs=famReqs(f);const extra=regs.length+reqs.length;
+  m.innerHTML='<div class="cfm"><span class="cfm-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></span>'+
+   '<h3 id="mTitle">ลบครอบครัว "'+esc(f.parent||'-')+'" ?</h3><p>รายชื่อน้อง '+(f.kids||[]).map(k=>esc(k.name)).join(', ')+' จะถูกลบออกจากระบบ ครอบครัวนี้จะไม่พบข้อมูลเดิมเมื่อกรอกเบอร์ '+esc(f.phone||'')+' อีก</p>'+
+   (extra?'<label class="cfm-opt"><input type="checkbox" id="cfmAll" checked><span>ลบใบสมัคร '+regs.length+' รายการ และคำขอเรียน '+reqs.length+' รายการของครอบครัวนี้ด้วย</span></label>':'')+
+   '<p class="cfm-warn">การลบนี้ย้อนกลับไม่ได้</p><div class="cfm-btns"><button class="btn" type="button" id="cfmNo">ยกเลิก</button><button class="btn btn-danger" type="button" id="cfmYes">ยืนยันลบ</button></div></div>';
+  openModal();$('#cfmNo').focus();$('#cfmNo').addEventListener('click',closeModal);
+  $('#cfmYes').addEventListener('click',async()=>{const b=$('#cfmYes');b.disabled=true;b.textContent='กำลังลบ…';
+    try{const all=$('#cfmAll')&&$('#cfmAll').checked;
+      if(all){for(const r of reqs){if(r.status==='confirmed'){for(const k of rkeys(r)){const still=allReqs.some(x=>x.id!==r.id&&x.status==='confirmed'&&covers(x,k));if(!still)await DB.setTaken(k,false)}}await DB.deleteRequest(r.id)}
+        for(const r of regs)await DB.deleteRegistration(r.id)}
+      await DB.deleteFamily(id);
+      try{const fs=store.get('families',[]).filter(x=>!samePhone(x.phone,f.phone));store.set('families',fs)}catch(e){}
+      closeModal();toast('ลบครอบครัว '+(f.parent||'')+' แล้ว')}
+    catch(e){console.warn(e);b.disabled=false;b.textContent='ยืนยันลบ';toast('ลบไม่สำเร็จ ลองอีกครั้ง')}})}
+$('#famDir').addEventListener('click',e=>{const d=e.target.closest('[data-famdel]');if(d){e.stopPropagation();confirmDeleteFamily(d.dataset.famdel);return}const o=e.target.closest('[data-famopen]');if(o)openFamily(o.dataset.famopen)});
 /* ---------- boot ---------- */
 const start=(location.hash||'').replace('#','');
 show(ORDER.includes(start)&&start!=='requests'&&start!=='students'?start:'home',{keepScroll:true});
