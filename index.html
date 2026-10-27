@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ครูพี่อู๋ Anywhere School</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1176,11 +1181,11 @@ pre.code.sm{min-height:0;font-size:13px;padding:14px 16px;width:100%}
 .t-shot{position:relative;display:flex;flex-direction:column;width:100%;height:100%;padding:0;border:0;text-align:left;color:var(--ink);cursor:zoom-in;overflow:hidden;transition:transform .45s cubic-bezier(.2,.9,.25,1.2),box-shadow .45s}
 .t-shot > *{position:relative;z-index:3}
 .t-shot:hover{transform:translateY(-6px) rotate(-.4deg);box-shadow:var(--shadow),0 24px 50px -24px var(--lemon)}
-.t-img{display:block;overflow:hidden;border-radius:28px 28px 0 0;aspect-ratio:4/3;flex:none}
+.t-img{position:relative;display:block;overflow:hidden;border-radius:28px 28px 0 0;aspect-ratio:4/3;flex:none}
 .t-step:first-child .t-img{aspect-ratio:auto;flex:1;min-height:240px}
 .t-step:last-child .t-img{aspect-ratio:auto;flex:1;min-height:200px}
 .t-step:last-child .t-shot{flex-direction:row}.t-step:last-child .t-img{border-radius:28px 0 0 28px;flex:1.6}.t-step:last-child .t-cap{flex:1;justify-content:center;padding:20px}
-.t-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.9,.25,1)}
+.t-img img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.9,.25,1)}
 .t-shot:hover .t-img img{transform:scale(1.07)}
 .t-num{position:absolute;left:12px;top:12px;padding:4px 10px;border-radius:999px;background:var(--lemon);color:#1B1A22;font-family:var(--mono);font-weight:800;font-size:13px}
 .t-zoom{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(10,12,20,.6);color:#fff;opacity:0;transform:scale(.7);transition:opacity .3s,transform .3s}
