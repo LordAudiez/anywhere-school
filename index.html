@@ -2949,8 +2949,47 @@ GAMES.farm={
    farmHud(c,st);
  }
 };
-function farmHud(c,st){const toolTh={seed:'เมล็ดพันธุ์',water:'รดน้ำ',harvest:'เก็บเกี่ยว'}[st.tool];hud(c,['เหรียญ: '+st.coins,'เครื่องมือ: '+toolTh]);
-  c.font='600 13px "IBM Plex Sans Thai", sans-serif';c.fillStyle='rgba(10,12,20,.62)';rr(c,350,20,272,26,13);c.fill();c.fillStyle='#fff';c.fillText('ปลูก → รดน้ำ → รอ 3 วินาที → เก็บเกี่ยว',364,38)}
+const toolImgs={};function toolImg(k){if(!toolImgs[k]&&TOOLS[k]){const im=new Image();im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(TOOLS[k].svg.replace('<svg ','<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" '));toolImgs[k]=im}return toolImgs[k]}
+const TOOL_COL={seed:['#C08A4E','#6B3F25'],water:['#5CB8FF','#1E6FB8'],harvest:['#F2C14E','#9A6A03']};
+function drawCoin(c,x,y,r,t){const sq=.72+.28*Math.abs(Math.cos(t*1.6));const w=r*sq;c.save();c.translate(x,y);
+  c.fillStyle='#9A6A03';c.beginPath();c.ellipse(1.5,2,w,r,0,0,Math.PI*2);c.fill();
+  const g=c.createLinearGradient(-w,-r,w,r);g.addColorStop(0,'#FFF1A8');g.addColorStop(.45,'#F7C948');g.addColorStop(1,'#D9961A');c.fillStyle=g;c.beginPath();c.ellipse(0,0,w,r,0,0,Math.PI*2);c.fill();
+  c.lineWidth=2.4;c.strokeStyle='#1B1A22';c.stroke();
+  if(true){c.strokeStyle='rgba(154,106,3,.85)';c.lineWidth=1.6;c.beginPath();c.ellipse(0,0,w*.68,r*.68,0,0,Math.PI*2);c.stroke();
+    c.fillStyle='#9A6A03';c.font='800 '+Math.round(r*1.05)+'px Inter, sans-serif';c.textAlign='center';c.textBaseline='middle';c.save();c.scale(sq,1);c.fillText('฿',0,1);c.restore()}
+  c.fillStyle='rgba(255,255,255,.75)';c.beginPath();c.ellipse(-w*.35,-r*.42,w*.18,r*.12,-.6,0,Math.PI*2);c.fill();c.restore()}
+function sparkle(c,x,y,s,a){c.save();c.globalAlpha=a;c.fillStyle='#FFF6C8';c.beginPath();c.moveTo(x,y-s);c.quadraticCurveTo(x,y,x+s,y);c.quadraticCurveTo(x,y,x,y+s);c.quadraticCurveTo(x,y,x-s,y);c.quadraticCurveTo(x,y,x,y-s);c.fill();c.restore()}
+function farmHud(c,st){const t=performance.now()/1000;const H=st._hud||(st._hud={shown:st.coins,bump:0,tool:st.tool,tSwap:-9,last:t});const dt=Math.min(.1,t-H.last);H.last=t;
+  if(H.shown!==st.coins){const d=st.coins-H.shown;H.shown+=Math.sign(d)*Math.max(1,Math.ceil(Math.abs(d)*dt*6));if(Math.sign(st.coins-H.shown)!==Math.sign(d))H.shown=st.coins;H.bump=1}
+  H.bump=Math.max(0,H.bump-dt*2.2);if(H.tool!==st.tool){H.tool=st.tool;H.tSwap=t}
+  c.save();c.textBaseline='alphabetic';c.textAlign='left';
+  /* coin badge */
+  const val=String(Math.round(H.shown));c.font='800 22px Inter, sans-serif';const vw=c.measureText(val).width;const bw=Math.max(118,58+vw+18),bx=12,by=12,bh=46;
+  const sc=1+H.bump*.08;c.save();c.translate(bx+bw/2,by+bh/2);c.scale(sc,sc);c.translate(-(bx+bw/2),-(by+bh/2));
+  c.fillStyle='rgba(27,26,34,.35)';rr(c,bx+2,by+4,bw,bh,23);c.fill();
+  const bg=c.createLinearGradient(0,by,0,by+bh);bg.addColorStop(0,'#FFF8E1');bg.addColorStop(1,'#FFE7A3');c.fillStyle=bg;rr(c,bx,by,bw,bh,23);c.fill();c.lineWidth=3;c.strokeStyle='#1B1A22';c.stroke();
+  drawCoin(c,bx+24,by+bh/2,15,t);
+  c.fillStyle='#1B1A22';c.font='800 22px Inter, sans-serif';c.fillText(val,bx+48,by+31);
+  c.font='700 10.5px "IBM Plex Sans Thai", sans-serif';c.fillStyle='#8A6410';c.fillText('เหรียญ',bx+48+vw+6,by+30);
+  const sp=(t*1.3)%1;sparkle(c,bx+13+sp*18,by+9+Math.sin(t*3)*2,4.5,Math.sin(sp*Math.PI));
+  if(H.bump>0){sparkle(c,bx+bw-10,by+8,6*H.bump,H.bump);sparkle(c,bx+bw-24,by+bh-4,4*H.bump,H.bump)}
+  c.restore();
+  /* tool badge */
+  const k=st.tool,col=TOOL_COL[k]||['#7AA7FF','#2563EB'],name={seed:'เมล็ดพันธุ์',water:'รดน้ำ',harvest:'เก็บเกี่ยว'}[k]||'';const keyN={seed:'1',water:'2',harvest:'3'}[k]||'';
+  const tx=12,ty=68,th=50;c.font='700 16px "IBM Plex Sans Thai", sans-serif';const nw=c.measureText(name).width;const tw=Math.max(150,68+nw+44);
+  const ps=Math.min(1,(t-H.tSwap)/.35);const pop=ps<1?1+Math.sin(ps*Math.PI)*.12:1;
+  c.fillStyle='rgba(27,26,34,.35)';rr(c,tx+2,ty+4,tw,th,25);c.fill();
+  c.fillStyle='#FFFDF5';rr(c,tx,ty,tw,th,25);c.fill();c.lineWidth=3;c.strokeStyle='#1B1A22';c.stroke();
+  const ix=tx+25,iy=ty+th/2;c.save();c.translate(ix,iy);c.scale(pop,pop);c.rotate(ps<1?Math.sin(ps*Math.PI*2)*.25:Math.sin(t*2)*.06);
+  c.fillStyle=col[0];c.beginPath();c.arc(0,0,19,0,Math.PI*2);c.fill();c.lineWidth=2.4;c.strokeStyle='#1B1A22';c.stroke();
+  const im=toolImg(k);if(im&&im.complete&&im.naturalWidth){c.drawImage(im,-15,-15,30,30)}c.restore();
+  c.fillStyle='#6B6A73';c.font='700 10.5px "IBM Plex Sans Thai", sans-serif';c.fillText('เครื่องมือ',tx+52,ty+21);
+  c.fillStyle='#1B1A22';c.font='700 16px "IBM Plex Sans Thai", sans-serif';c.fillText(name,tx+52,ty+39);
+  const kx=tx+tw-30,ky=ty+13;c.fillStyle=col[1];rr(c,kx,ky,22,24,7);c.fill();c.fillStyle='#fff';c.font='800 13px Inter, sans-serif';c.textAlign='center';c.fillText(keyN,kx+11,ky+17);c.textAlign='left';
+  /* hint pill */
+  c.font='600 13px "IBM Plex Sans Thai", sans-serif';const hint='ปลูก → รดน้ำ → รอ 3 วินาที → เก็บเกี่ยว';const hw=c.measureText(hint).width+28;const hx=640-hw-12;
+  c.fillStyle='rgba(10,12,20,.62)';rr(c,hx,14,hw,28,14);c.fill();c.fillStyle='#fff';c.fillText(hint,hx+14,33);
+  c.restore()}
 
 GAMES.race={
  init(){return{x:570,y:215,a:-Math.PI/2,v:0,lap:0,half:false,lt:0,best:null,last:null,prevTh:0.05,on:true,steer:0,ai:[{th:-0.35,w:.55,lane:-22,c:'#F59A5B'},{th:-0.7,w:.5,lane:22,c:'#F2C14E'}],skid:[]}},
